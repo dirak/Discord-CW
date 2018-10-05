@@ -1,15 +1,12 @@
 const Discord = require('discord.js')
-
+const config = require('./config.json')
 const client = new Discord.Client()
 
 client.on('ready', () => {
 	console.log('Client is ready.')
-	/*client.guilds.forEach((guild) => {
-		if(guild.id == '497427504232005634')console.log(guild.channels.values())
-	})*/
 })
 
-client.login('MzUwMDY0NzU3MTg2NzU2NjE4.DpexnA.P17eWG6TIHmiuIXzNgXSHknLHeI')
+client.login(config.client_secret)
 
 client.on('message', message => {
 	if(message.content.startsWith('!cw')) {
