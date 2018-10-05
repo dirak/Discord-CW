@@ -15,7 +15,7 @@ client.on('message', message => {
 		let attachment = message.attachments.first()
 		let original_message = message
 		message.delete(500)
-		client.channels.get('497559630407532544').send({file: attachment.url})
+		client.channels.get(config.cw_channel).send({file: attachment.url})
 		.then((message) => {
 			let attachment = message.attachments.first()
 			original_message.channel.send({

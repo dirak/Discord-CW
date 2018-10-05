@@ -1,3 +1,4 @@
 {
-	"client_secret": "<SECRET HERE>"
+	"client_secret": "<SECRET HERE>",
+	"cw_channel": "<CHANNEL WHERE IMAGES GO>"
 }
