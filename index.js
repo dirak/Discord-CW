@@ -38,8 +38,4 @@ client.on('message', message => {
 			console.log(err)
 		})
 	}
-	else if(message.content === '!dab') {
-		let dab = client.emojis.find('name', 'transdab')
-		message.channel.send(`${dab}`)
-	}
 })
