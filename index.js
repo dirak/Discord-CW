@@ -1,18 +1,4 @@
 const Discord = require('discord.js')
-const fs = require('fs')
-const request = require('request')
-
-var download = function(uri, filename){
-	return new Promise((resolve, reject) => {
-		request.head(uri, function(err, res, body){    
-			request(uri).pipe(fs.createWriteStream(filename)).on('close', (err, response, body) => {
-				if(err) return reject(err)
-				resolve(filename)
-			})
-		})
-	})
-}
-
 
 const client = new Discord.Client()
 
@@ -31,11 +17,9 @@ client.on('message', message => {
 		let user = message.author
 		let attachment = message.attachments.first()
 		let original_message = message
-		download(attachment.url, `./files/${attachment.filename}`)
-		.then((filename) => {
-			message.delete(500)
-			return client.channels.get('497559630407532544').send({file: filename})
-		}).then((message) => {
+		message.delete(500)
+		client.channels.get('497559630407532544').send({file: attachment.url})
+		.then((message) => {
 			let attachment = message.attachments.first()
 			original_message.channel.send({
 				embed: {
