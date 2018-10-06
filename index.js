@@ -37,5 +37,11 @@ client.on('message', message => {
     }).catch((err) => {
       console.log(err)
     })
+  } else if(message.content === "Whose valid?") {
+    "🇾|🇴|🇺|🇷|🇪|🇻|🇦|🇱|🇮|🇩".split('|').reduce((promise, emoji) => {
+      return promise.then(() => {
+        return message.react(emoji)
+      })
+    }, Promise.resolve()).catch(console.error)
   }
 })
